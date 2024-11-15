@@ -1,0 +1,81 @@
+---
+const {
+    url = "#",
+    cardimage = "",
+    cardimagealt = "",
+
+    badgenyt = "false",
+    badgerabat = "false",
+    badgerabatsats = "",
+    badgefaapladser = "false",
+
+    holdnavn = "",
+    tidspunkt = "",
+    aldersgruppe = "",
+    niveau = "",
+    pladserpaaholdet = "",
+    lokale = "",
+    holdbeskrivelse = "",
+
+    underviserfoto = "",
+    underviserfotoalt = "",
+    undervisernavn = "",
+    underviserinfo = "",
+} = Astro.props;
+---
+
+<article class="card border-blue-500 border-2 @container">
+    <a href={url} class="flex flex-col justify-between h-full">
+        <!-- <a href="#" class="flex flex-col justify-between h-full"> -->
+        <header class="danseholdheader mb-xs relative">
+            <img src={cardimage} alt={cardimagealt} class="object-cover h-9xl w-full" />
+            <!-- <img src="/ballroom.jpg" alt="ballroom" class="object-cover h-9xl w-full" /> -->
+            {badgenyt === "true" && <div class="badge absolute top-xs bg-blue-500 p-xs text-white">Nyt hold!</div>}
+            {
+                badgerabat === "true" && (
+                    <div class="badge absolute top-xs bg-red-500 p-xs right-[0] text-white">
+                        <span>{badgerabatsats}</span>
+                    </div>
+                )
+            }
+            {badgefaapladser === "true" && <div class="badge absolute bottom-xs bg-yellow-500 right-[0] text-black p-xs">Kun få pladser tilbage!</div>}
+            <!-- <div class="badge absolute top-xs bg-blue-500 p-xs text-white">Nyt hold!</div>
+            <div class="badge absolute top-xs bg-red-500 p-xs right-[0] text-white"><span> 10% rabat</span></div>
+            <div class="badge absolute bottom-xs bg-yellow-500 right-[0] text-black p-xs">Kun få pladser tilbage!</div> -->
+        </header>
+        <section class="holdinfo p-xs grow border-b-2 border-blue-500">
+            <h3 class="text-small @lg:text-large mb-xs">{holdnavn}</h3>
+            <!-- <h3 class="text-small @lg:text-large mb-xs">Ballroom for begyndere</h3> -->
+            <div class="flex flex-col @md:flex-row @md:justify-betweennmb-xs p-xs">
+                <div class="venstre grow">
+                    <div><span>Tid:</span><span>{tidspunkt}</span></div>
+                    <div><span>Alder:</span><span>{aldersgruppe}</span></div>
+                    <div><span>Niveau:</span><span>{niveau}</span></div>
+                    <!-- <div><span>Tid:</span><span>Fredag 20-22</span></div>
+                    <div><span>Alder:</span><span>25+</span></div>
+                    <div><span>Niveau:</span><span>Begynder</span></div> -->
+                </div>
+                <div class="hoejre grow">
+                    <div><span>Deltagere:</span><span>{pladserpaaholdet}</span></div>
+                    <div><span>Lokale:</span><span>{lokale}</span></div>
+                    <!-- <div><span>Deltagere:</span><span>20</span></div>
+                    <div><span>Lokale:</span><span>Koncertsalen</span></div> -->
+                </div>
+            </div>
+            <p class="mb-xs p-xs">{holdbeskrivelse}</p>
+            <!-- <p class="mb-xs p-xs">Ballroom er en meget romantisk dans. Så find din partner, og meld jer til ballroom dans for begynder, og mærk suset i den romantiske dans.</p> -->
+        </section>
+        <section class="flex py-s items-center justify-center">
+            <div class="p-xs"><img class="object-cover w-5xl rounded-full" src={underviserfoto} alt={underviserfotoalt} class="object-cover h-9xl w-full" /></div>
+            <!-- <div class="p-xs"><img class="object-cover w-5xl rounded-full" src="/karnahage.png" alt="Karna Hage" class="object-cover h-9xl w-full" /></div> -->
+            <div class="flex flex-col p-xs">
+                <div><span>Underviser:</span><span>{undervisernavn}</span></div>
+                <p class="mb-xs">{underviserinfo}</p>
+            </div>
+            <!-- <div class="flex flex-col p-xs">
+                <div><span>Underviser:</span><span>Karna Hage</span></div>
+                <p class="mb-xs">Karna er uddannet Ballroom instruktør fra Danse-Staffans skole og har 20 års erfaring som danseinstruktør.</p>
+            </div> -->
+        </section>
+    </a>
+</article>
